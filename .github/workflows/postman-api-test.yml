@@ -1,6 +1,6 @@
 name: Newman API Tests
 on:
-workflow_dispatch:
+    workflow_dispatch:
 jobs:
     test:
         defaults:
@@ -11,7 +11,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-
             - uses: actions/setup-node@v2
               with:
               node-version: "18"
@@ -22,5 +21,5 @@ jobs:
             - name: 'Install newman reporter'
               run: 'npm install -g newman-reporter-htmlextra'
 
-            - name: "Run Kasiraja"
+            - name: "Run tests"
               run: "newman run KasirAja.postman_collection.json -e TestingEnv.postman_environment.json -r htmlextra --reporter-htmlextra-export htmlrepor.html --reporter-htmlextra-darktheme > runreport1.html"
